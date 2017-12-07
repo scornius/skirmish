@@ -1,0 +1,25 @@
+
+/*noinspection CssInvalidFunction*/
+
+#highlightedField{
+    -fx-fill: linear-gradient(
+            from 0px 0px to 4px 4px,
+            reflect,
+            rgba(0,0,0,0) 70%,
+            rgba(120, 220, 120, 1) 30%
+    );
+}
+
+#selectedSourceField{
+    -fx-stroke: blue;
+}
+
+#selectedTargetField{
+    -fx-stroke: red;
+}
+
+#fighterGrid {
+    -fx-background-color: lightgray;
+    -fx-border-color: black;
+    -fx-padding: 5;
+}
