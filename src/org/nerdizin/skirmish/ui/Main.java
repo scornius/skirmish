@@ -1,5 +1,7 @@
 package org.nerdizin.skirmish.ui;
 
+import javafx.event.EventType;
+import javafx.stage.StageStyle;
 import org.nerdizin.skirmish.game.Game;
 import org.nerdizin.skirmish.util.ExceptionCatchingEventDispatcherWrapper;
 import org.nerdizin.skirmish.util.Translator;
@@ -26,6 +28,7 @@ public class Main extends Application {
         // catch all exceptions
         primaryStage.setEventDispatcher(new ExceptionCatchingEventDispatcherWrapper(primaryStage.getEventDispatcher()));
 
+        //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("Skirmish");
         primaryStage.setScene(scene);
         primaryStage.show();
