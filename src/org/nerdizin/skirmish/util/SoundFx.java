@@ -4,7 +4,7 @@ import javafx.scene.media.AudioClip;
 
 public enum SoundFx {
 
-    LASPISTOL("laspistol.wav");
+    LASPISTOL("laser.mp3");
 
     private AudioClip audioClip;
     private final static String SOUND_FOLDER = "/resources/sounds/";
