@@ -154,42 +154,7 @@ public class ActionPanel {
         final Button buttonMove = new Button("Move");
         buttonMove.setPrefSize(150, 20);
         buttonMove.setOnMouseClicked(mouseEvent -> {
-            if (game.getSelectedFields().getSelectedSourceField() == null
-                    || game.getSelectedFields().getSelectedTargetField() == null) {
-                return;
-            }
-
-            final org.nerdizin.skirmish.game.model.Fighter fighter = MapHelper.getFighter(game,
-                    game.getSelectedFields().getSelectedSourceField().getField());
-
-            if (fighter == null) {
-                Messages.send("No fighter at source field.");
-                return;
-            }
-
-            if (!MapHelper.canMoveInDirection(
-                    game.getSelectedFields().getSelectedSourceField().getField(),
-                    game.getMap(),
-                    MapHelper.getDirectionOfTargetField(
-                            game.getSelectedFields().getSelectedSourceField().getField(),
-                            game.getSelectedFields().getSelectedTargetField().getField()
-                    ))) {
-                Messages.send("Way to target field is blocked.");
-                return;
-            }
-
-            if (MapHelper.getDistance(game.getSelectedFields().getSelectedSourceField().getField(),
-                    game.getSelectedFields().getSelectedTargetField().getField()) > 1) {
-                Messages.send("Target field is too far away.");
-                return;
-            }
-
-            if (! fighter.canAffordAction(Action.MOVE)) {
-                Messages.send("Fighter has not enough AP to move.");
-                return;
-            }
-
-            fighter.move(game.getSelectedFields().getSelectedTargetField().getField());
+            MovementHelper.move(game, null);
         });
 
         return buttonMove;

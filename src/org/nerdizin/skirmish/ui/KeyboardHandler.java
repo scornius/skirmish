@@ -33,38 +33,6 @@ public class KeyboardHandler implements EventHandler<KeyEvent> {
     }
 
     private void move(final Direction direction) {
-        if (game.getSelectedFields().getSelectedSourceField() == null) {
-            return;
-        }
-
-        final Fighter fighter = MapHelper.getFighter(
-                game, game.getSelectedFields().getSelectedSourceField().getField());
-
-        if (fighter == null) {
-            Messages.send("No fighter at source field.");
-            return;
-        }
-
-        final Field targetField = MapHelper.getFieldInDirection(
-                game.getSelectedFields().getSelectedSourceField().getField(),
-                game.getMap(),
-                direction
-        );
-
-        if (!MapHelper.canMoveInDirection(
-                game.getSelectedFields().getSelectedSourceField().getField(),
-                game.getMap(),
-                direction)) {
-            Messages.send("Way to target field is blocked.");
-            return;
-        }
-
-        if (!fighter.canAffordAction(Action.MOVE)) {
-            Messages.send("Fighter has not enough AP to move.");
-            return;
-        }
-
-        fighter.move(targetField);
-        game.getSelectedFields().getSelectedSourceField().setField(targetField);
+        MovementHelper.move(game, direction);
     }
 }
